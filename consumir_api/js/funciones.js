@@ -19,6 +19,7 @@ const listarDatos = async() => {
             `<td>${usuario.longitud}</td>`+
             `<td>${usuario.descripcion}</td>`+
             `<td>${usuario.fecha}</td>`+
+            `<td>${usuario.nombre_victima}</td>`+
             `<td><a class="waves-effect waves-light btn modal-trigger" href="#modal1" onclick='editar(${JSON.stringify(usuario)})' >Editar</a> 
             <a class="waves-effect waves-light btn modal-danger red"  onclick='eliminar(${JSON.stringify(usuario)})'>Eliminar</a></td>`+
             `</tr>`
@@ -33,13 +34,15 @@ const registrar = async () => {
     let _direccion = document.getElementById('direccion').value;
     let _latitud = document.getElementById('latitud').value;
     let _longitud = document.getElementById('longitud').value;
-    let _descripcion = document.getElementById('descripcion').value;
-  
+    let _descripcion = document.getElementById('descripcion').value; 
+    let _nombre_victima = document.getElementById('nombre_victima').value;
+
       let usuario = {
         direccion: _direccion,
         latitud: _latitud,
         longitud: _longitud,
-        descripcion: _descripcion
+        descripcion: _descripcion,
+        nombre_victima: _nombre_victima
       };
 
       console.log(usuario)
@@ -63,17 +66,19 @@ const registrar = async () => {
         });
     } 
       
-
+    
 const editar= (usuario)=>{
     document.getElementById('direccion').value = ''
     document.getElementById('latitud').value = ''
     document.getElementById('longitud').value = ''
     document.getElementById('descripcion').value = ''
+    document.getElementById('nombre_victima').value = ''
 
     document.getElementById('direccion').value = usuario.direccion
     document.getElementById('latitud').value = usuario.latitud
     document.getElementById('longitud').value = usuario.longitud
     document.getElementById('descripcion').value = usuario.descripcion
+    document.getElementById('nombre_victima').value = usuario.nombre_victima
 }
 
 
@@ -101,12 +106,14 @@ const actualizar = async()=>{
     let _latitud = document.getElementById('latitud').value
     let _longitud = document.getElementById('longitud').value
     let _descripcion = document.getElementById('descripcion').value
-    if(_direccion.trim() !== '' && _latitud.trim() !== '' && _longitud.trim() !== '' && _descripcion.trim() !== ''){
+    let _nombre_victima = document.getElementById('nombre_victima').value
+    if(_direccion.trim() !== '' && _latitud.trim() !== '' && _longitud.trim() !== '' && _descripcion.trim() !== '' && _nombre_victima.trim() !== ''){
         let usuario = {
             direccion:_direccion,
             latitud:_latitud,
             longitud:_longitud,
-            descripcion:_descripcion
+            descripcion:_descripcion,
+            nombre_victima: _nombre_victima
         }
 
         fetch(url,  {

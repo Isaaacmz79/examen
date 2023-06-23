@@ -29,6 +29,10 @@ const UsuarioSchema= Schema({
         required:[true, 'El estado es obligatorio']
         
     },
+    nombre_victima:{
+        type: String,
+        required: [true, 'El nombre de la víctima es necesario']
+    },
     fecha:{
         type:Date,
         default : new Date

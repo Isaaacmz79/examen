@@ -54,13 +54,13 @@ const usuarioPost = async(req,res = response) => {
 
 const usuarioPut= async(req, res= response)=>{
     //captura atributos o parametros
-    const{direccion, latitud, longitud, descripcion}=req.body
+    const{direccion, latitud, longitud, descripcion, nombre_victima}=req.body
     let mensaje=''
     //realizar la modificacion
    // el campo 1 es con el cual se va hacer la busqueda los demas son los campos que se va a modificar ejem nombre:nombre
     
     try{
-        const usuario= await Usuario.findOneAndUpdate({direccion:direccion}, {latitud:latitud, longitud:longitud, descripcion:descripcion})
+        const usuario= await Usuario.findOneAndUpdate({direccion:direccion}, {latitud:latitud, longitud:longitud, descripcion:descripcion, nombre_victima: nombre_victima})
         mensaje='La modificación se efectuó correctamente.'
 
     }
